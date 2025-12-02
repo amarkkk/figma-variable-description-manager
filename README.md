@@ -17,8 +17,11 @@ A lightweight Figma plugin for managing descriptions across multiple variables a
 
 ## Screenshots
 
-<!-- Add screenshots here once available -->
-_Screenshots coming soon_
+<img width="977" height="679" alt="Screenshot 2025-12-02 at 11 55 22" src="https://github.com/user-attachments/assets/f0f0838f-2203-4d30-b1a4-79c6cb2e2649" />
+<img width="977" height="679" alt="Screenshot 2025-12-02 at 11 54 55" src="https://github.com/user-attachments/assets/554c9f0c-2967-4367-acf1-8266f0be6e03" />
+<img width="977" height="679" alt="Screenshot 2025-12-02 at 11 54 31" src="https://github.com/user-attachments/assets/121d8a8a-ad0b-48b4-92b8-b6ce2b7640e1" />
+<img width="977" height="679" alt="Screenshot 2025-12-02 at 11 54 14" src="https://github.com/user-attachments/assets/337636ea-1b6f-4085-871a-2cd9a053ea55" />
+<img width="977" height="679" alt="Screenshot 2025-12-02 at 11 54 01" src="https://github.com/user-attachments/assets/09e84d59-dd2f-42c7-89d9-a63b74c6d0ce" />
 
 ## Installation
 
