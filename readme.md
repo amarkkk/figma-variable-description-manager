@@ -4,7 +4,7 @@ A lightweight Figma plugin for managing descriptions across multiple variables a
 
 > **⚠️ Development Status**: This plugin is currently in development and not yet published to the Figma Community. Follow the installation instructions below to use it locally.
 
-## Why This Plugin?
+## Use Case
 
 When building design systems with variables, you often create variable families by duplicating scoped variables. For example, when setting up a spacing scale or type ramp, you might start with one variable that has a description, then duplicate it multiple times to create variants.
 
@@ -119,7 +119,6 @@ No build step required! The plugin uses vanilla JavaScript and can be imported d
 - [ ] Add search functionality
 - [ ] Support for variable name patterns (e.g., set descriptions based on variable naming conventions)
 - [ ] Export/import descriptions as CSV
-- [ ] Template system for common description formats
 
 ## Contributing
 
@@ -127,7 +126,7 @@ This is a personal project currently in development. Once published, contributio
 
 ## License
 
-[Add license information]
+MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Support
 
