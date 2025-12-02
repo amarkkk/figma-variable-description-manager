@@ -127,7 +127,7 @@ This is a personal project currently in development. Once published, contributio
 
 ## License
 
-[Add license information]
+MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Support
 
