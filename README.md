@@ -2,20 +2,9 @@
 
 > Bulk clear or update descriptions across multiple variables at once.
 
-> **⚠️ Development Status**: This plugin is currently in development and not yet published to the Figma Community. Follow the installation instructions below to use it locally.
+![Status: Stable](https://img.shields.io/badge/status-stable-green)
 
-> **🔒 Privacy**: This plugin operates entirely locally. No data is sent to external servers (`networkAccess: { allowedDomains: ["none"] }`).
-
-## Use Case
-
-When building design systems, you often create variable families by duplicating scoped variables. Descriptions get inherited when duplicating, which clutters Figma's search functionality with irrelevant matches. Cleaning them up one by one is tedious.
-
-**The solution:** This plugin lets you bulk-clear or bulk-update descriptions across multiple variables at once.
-
-**Example scenarios:**
-- Clear inherited descriptions from duplicated variables
-- Set consistent descriptions across an entire collection
-- Review which variables have descriptions and clean up clutter
+**Privacy:** This plugin runs entirely locally. No data is sent to external servers (`networkAccess: { allowedDomains: ["none"] }`).
 
 ## Features
 
@@ -30,12 +19,14 @@ When building design systems, you often create variable families by duplicating 
 ## Installation
 
 1. Clone or download this repository
-2. In Figma Desktop: **Plugins -> Development -> Import plugin from manifest**
+2. In Figma Desktop: **Plugins → Development → Import plugin from manifest**
 3. Select the `manifest.json` file from this folder
+
+> **Note:** This plugin currently uses plain JavaScript — no build step required. TypeScript migration is planned.
 
 ## Usage
 
-1. Open the plugin from **Plugins -> Development -> Variable Descriptions Manager**
+1. Open the plugin from **Plugins → Development → Variable Descriptions Manager**
 2. Browse your variables organized by collection
 3. Select variables to modify:
    - Click individual checkboxes for specific variables
@@ -50,7 +41,7 @@ When building design systems, you often create variable families by duplicating 
 
 ## Screenshots
 
-<!-- Add screenshots here -->
+<!-- Screenshots will be added in Chapter 11 -->
 
 ## Known Limitations
 
@@ -58,12 +49,27 @@ When building design systems, you often create variable families by duplicating 
 - No pattern-based operations (e.g., auto-generate descriptions from variable names)
 - Remote/library variables are not supported (local variables only)
 
+## Changelog
+
+See [CHANGELOG.md](./CHANGELOG.md) for version history and release notes.
+
 ## License
 
-MIT
+[MIT](./LICENSE)
 
 ## Author
 
-Created by [Márk Andrássy](https://github.com/amarkkk)
+Created by [Mark Andrassy](https://github.com/amarkkk)
 
-Part of a collection of Figma plugins for design token management.
+---
+
+**Part of the [Figma Variable Tools](https://github.com/amarkkk) suite:**
+
+| Plugin | Description |
+|--------|-------------|
+| [Variable to CSS](https://github.com/amarkkk/figma-variable-to-css) | Export variables to fluid CSS with clamp() scaling |
+| [Variable Mover](https://github.com/amarkkk/figma-variable-mover) | Move variables between collections preserving aliases |
+| [Variable Remapper](https://github.com/amarkkk/figma-variable-remapper) | Bulk find-and-replace variable bindings |
+| [Variable Import/Export](https://github.com/amarkkk/figma-variable-import-export) | CSV/JSON export for spreadsheet editing + re-import |
+| **Variable Description Manager** | Bulk clear/update variable descriptions |
+| [Variable Network](https://github.com/amarkkk/figma-variable-network) | Visualize token alias chains and component usage |
