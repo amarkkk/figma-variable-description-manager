@@ -1,5 +1,5 @@
 {
-  "name": "figma-variable-descriptions",
+  "name": "figma-variable-description-manager",
   "version": "1.0.0",
   "description": "Bulk clear or update variable descriptions across multiple variables at once",
   "author": "Mark Andrassy",
