@@ -15,14 +15,24 @@
 - **Overwrite Protection** - Get confirmation before overwriting existing descriptions
 - **Resizable Window** - Drag the corner to resize; size is remembered between sessions
 - **Dark/Light Theme** - Toggle theme; preference is saved between sessions
+- **Help & About Dialogs** - In-plugin onboarding and plugin details
+- **Unified Suite UI** - Shares the visual baseline (design tokens, light/dark themes, dialogs, tooltips) used across the Figma Variable Tools suite
 
 ## Installation
 
 1. Clone or download this repository
-2. In Figma Desktop: **Plugins → Development → Import plugin from manifest**
-3. Select the `manifest.json` file from this folder
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Build the plugin:
+   ```bash
+   npm run build
+   ```
+4. In Figma Desktop: **Plugins → Development → Import plugin from manifest**
+5. Select the `manifest.json` file from this folder
 
-> **Note:** This plugin currently uses plain JavaScript — no build step required. TypeScript migration is planned.
+> **Note:** The plugin source is TypeScript (`code.ts`); `npm run build` compiles it to `code.js`, which is what Figma loads.
 
 ## Usage
 

@@ -11,33 +11,35 @@
     }
 
     :root {
-      /* Light theme (Figma native colors) */
-      --bg-primary: #ffffff;
-      --bg-secondary: #f5f5f5;
-      --bg-tertiary: #e5e5e5;
-      --bg-hover: #f0f0f0;
-      --bg-active: #e5e5e5;
+      --bg-primary: #feffff;
+      --bg-secondary: #f6f7f8;
+      --bg-tertiary: #e7e8e9;
+      --bg-hover: #eeeff0;
+      --bg-active: #d3d4d6;
       
-      --text-primary: #000000;
-      --text-secondary: #333333;
-      --text-tertiary: #666666;
-      --text-disabled: #999999;
+      --text-primary: #141517;
+      --text-secondary: #404345;
+      --text-tertiary: #6b6e72;
+      --text-disabled: #888b8e;
       
-      --border-strong: #d4d4d4;
-      --border-medium: #e5e5e5;
-      --border-subtle: #f0f0f0;
+      --border-strong: #b8bbbd;
+      --border-medium: #d3d4d6;
+      --border-subtle: #e7e8e9;
       
-      --accent-primary: #18a0fb;
-      --accent-hover: #0d8ce8;
-      --accent-active: #0b7cd6;
+      --accent-primary: #be8346;
+      --accent-hover: #ac7336;
+      --accent-active: #8e5e2b;
+      --accent-text: #8e5e2b;
+      --accent-bg: #fcf6f1;
+      --accent-on-accent: #141517;
       
-      --success-bg: #d4edda;
-      --success-text: #155724;
-      --success-border: #c3e6cb;
+      --success-bg: #f0f5f1;
+      --success-text: #3a7d5c;
+      --success-border: #c8ddd0;
       
-      --error-bg: #f8d7da;
-      --error-text: #721c24;
-      --error-border: #f5c6cb;
+      --error-bg: #f8efee;
+      --error-text: #b53d3d;
+      --error-border: #ddc8c8;
       
       --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
       --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -45,33 +47,35 @@
     }
 
     [data-theme="dark"] {
-      /* Dark theme (Figma native colors) */
-      --bg-primary: #1e1e1e;
-      --bg-secondary: #2c2c2c;
-      --bg-tertiary: #3c3c3c;
-      --bg-hover: #383838;
-      --bg-active: #444444;
+      --bg-primary: #141517;
+      --bg-secondary: #27292b;
+      --bg-tertiary: #404345;
+      --bg-hover: #333638;
+      --bg-active: #5e6164;
       
-      --text-primary: #ffffff;
-      --text-secondary: #e5e5e5;
-      --text-tertiary: #b3b3b3;
-      --text-disabled: #7a7a7a;
+      --text-primary: #feffff;
+      --text-secondary: #e7e8e9;
+      --text-tertiary: #b8bbbd;
+      --text-disabled: #7e8084;
       
-      --border-strong: #5a5a5a;
-      --border-medium: #3c3c3c;
-      --border-subtle: #2c2c2c;
+      --border-strong: #5e6164;
+      --border-medium: #404345;
+      --border-subtle: #27292b;
       
-      --accent-primary: #18a0fb;
-      --accent-hover: #3db0ff;
-      --accent-active: #0d8ce8;
+      --accent-primary: #be8346;
+      --accent-hover: #ca9663;
+      --accent-active: #ac7336;
+      --accent-text: #deb996;
+      --accent-bg: #312111;
+      --accent-on-accent: #141517;
       
-      --success-bg: #1a3d28;
-      --success-text: #4ade80;
-      --success-border: #2d5a3d;
+      --success-bg: #1a2e24;
+      --success-text: #6abf8a;
+      --success-border: #2d4a3d;
       
-      --error-bg: #3d1a1a;
-      --error-text: #f87171;
-      --error-border: #5a2d2d;
+      --error-bg: #2e1e1e;
+      --error-text: #e06060;
+      --error-border: #4a2d2d;
       
       --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
       --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.4);
@@ -111,28 +115,61 @@
     .select-none { user-select: none; }
     .transition { transition: all 0.15s ease; }
 
-    .icon-button {
-      width: 28px;
-      height: 28px;
-      display: flex;
+    .icon-btn {
+      width: 30px;
+      min-height: 30px;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       background: transparent;
       border: none;
-      border-radius: 4px;
+      border-radius: 3px;
       cursor: pointer;
       color: var(--text-tertiary);
       transition: all 0.15s ease;
+      position: relative;
+      flex-shrink: 0;
     }
 
-    .icon-button:hover {
+    .icon-btn:hover {
       background: var(--bg-hover);
       color: var(--text-secondary);
     }
 
-    .icon-button:active {
+    .icon-btn:active {
       background: var(--bg-active);
     }
+
+    .icon-btn svg {
+      pointer-events: none;
+    }
+
+    .tooltip {
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      padding: 4px 8px;
+      border-radius: 2px;
+      font-size: 10px;
+      white-space: nowrap;
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      box-shadow: var(--shadow-md);
+    }
+
+    .icon-btn:hover .tooltip {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .tooltip-bottom { bottom: auto; top: calc(100% + 6px); }
+    .tooltip-left { left: 0; transform: none; }
+    .tooltip-right { left: auto; right: 0; transform: none; }
 
     /* Filter Section */
     .filter-section {
@@ -212,7 +249,7 @@
     #new-description:focus {
       outline: none;
       border-color: var(--accent-primary);
-      box-shadow: 0 0 0 2px rgba(24, 160, 251, 0.1);
+      box-shadow: 0 0 0 2px var(--accent-bg);
     }
 
     #new-description:disabled {
@@ -284,7 +321,13 @@
       border-color: var(--border-medium);
     }
 
-    .toggle {
+    .collection-header:focus-visible {
+      outline: 2px solid var(--accent-primary);
+      outline-offset: -2px;
+    }
+
+    .toggle,
+    .accordion-chevron {
       width: 16px;
       font-size: 10px;
       color: var(--text-tertiary);
@@ -296,6 +339,12 @@
       cursor: pointer;
       width: 16px;
       height: 16px;
+    }
+
+    .checkbox {
+      accent-color: var(--accent-primary);
+      cursor: pointer;
+      flex-shrink: 0;
     }
 
     .collection-label {
@@ -411,6 +460,8 @@
       }
     }
 
+    .hidden { display: none !important; }
+
     .status-message.hidden {
       display: none;
     }
@@ -433,43 +484,78 @@
       gap: 8px;
       justify-content: space-between;
       align-items: center;
+      padding: 12px 12px;
+      border-top: 1px solid var(--border-medium);
+      background: var(--bg-secondary);
+      flex-shrink: 0;
     }
 
-    .primary-button {
-      padding: 8px 16px;
-      background: var(--accent-primary);
-      color: white;
-      border: none;
-      border-radius: 6px;
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: flex-end;
+      padding-right: 20px;
+      flex-shrink: 0;
+    }
+
+    .footer-stats {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      margin-left: 4px;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .btn,
+    .primary-button,
+    .secondary-button {
+      min-height: 30px;
+      padding: 0 16px;
+      border-radius: 3px;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 500;
       cursor: pointer;
-      transition: all 0.15s ease;
-      box-shadow: var(--shadow-sm);
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .primary-button,
+    .btn-primary {
+      background: transparent;
+      color: var(--accent-text);
+      border: 1px solid var(--accent-primary);
     }
 
     .primary-button:hover {
-      background: var(--accent-hover);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-1px);
+      background: var(--accent-bg);
+      border-color: var(--accent-hover);
+      color: var(--accent-text);
     }
 
     .primary-button:active {
-      background: var(--accent-active);
-      box-shadow: var(--shadow-sm);
-      transform: translateY(0);
+      background: var(--accent-bg);
+      border-color: var(--accent-active);
+      color: var(--accent-active);
     }
 
     .secondary-button {
-      padding: 8px 16px;
       background: var(--bg-secondary);
       color: var(--text-secondary);
       border: 1px solid var(--border-strong);
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.15s ease;
     }
 
     .secondary-button:hover {
@@ -492,7 +578,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 1000;
+      z-index: 10001;
       animation: fadeIn 0.2s ease;
     }
 
@@ -545,6 +631,146 @@
       gap: 8px;
       justify-content: flex-end;
     }
+
+    .info-dialog {
+      width: min(420px, calc(100vw - 32px));
+      max-width: none;
+      border-radius: 6px;
+    }
+
+    .dialog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .dialog-body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .dialog-body ul {
+      margin-left: 18px;
+    }
+
+    .dialog-body strong {
+      color: var(--text-primary);
+    }
+
+    .help-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 10002;
+      background: rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    [data-theme="dark"] .help-backdrop {
+      background: rgba(0, 0, 0, 0.55);
+    }
+
+    .help-backdrop.hidden {
+      display: none;
+    }
+
+    .help-modal {
+      /* 520px is the floor (the old fixed width); grows proportionally with the
+         plugin window so wider windows get a wider, less-scrolly modal. */
+      width: clamp(520px, 58vw, 900px);
+      max-height: 84vh;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+      border-radius: 6px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .help-modal-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-medium);
+      flex-shrink: 0;
+    }
+
+    .help-modal-title {
+      flex: 1;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+    }
+
+    .help-modal-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .help-modal-body::-webkit-scrollbar {
+      display: none;
+    }
+
+    .help-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .help-section-title {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      letter-spacing: 0.05em;
+    }
+
+    .help-para {
+      font-size: 11px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .dialog-close-btn {
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      min-height: 22px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      border-radius: 4px;
+      color: var(--text-tertiary);
+      cursor: pointer;
+    }
+
+    .dialog-close-btn:hover {
+      background: var(--bg-hover);
+      color: var(--text-secondary);
+    }
   </style>
 </head>
 <body>
@@ -553,7 +779,7 @@
     <!-- Filter -->
     <div class="filter-section">
       <label class="checkbox-label">
-        <input type="checkbox" id="filter-with-descriptions">
+        <input type="checkbox" id="filter-with-descriptions" class="checkbox">
         <span id="filter-label">Show only variables with descriptions</span>
       </label>
     </div>
@@ -561,7 +787,7 @@
     <!-- Select All -->
     <div class="select-all-section">
       <label class="checkbox-label">
-        <input type="checkbox" id="select-all">
+        <input type="checkbox" id="select-all" class="checkbox">
         <span id="select-all-label">Select All (0 variables)</span>
       </label>
       <span id="selection-count" class="selection-count">0 selected</span>
@@ -591,16 +817,32 @@
     
     <!-- Footer Actions -->
     <div class="footer">
-      <button id="theme-toggle" class="icon-button" title="Toggle theme">
-        <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256">
-          <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
-        </svg>
-        <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256" style="display: none;">
-          <path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56A104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"></path>
-        </svg>
-      </button>
-      <div style="display: flex; gap: 8px;">
-        <button id="apply-btn" class="primary-button">Apply Changes</button>
+      <div class="footer-left">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+          <span class="tooltip">Toggle theme</span>
+          <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path></svg>
+          <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256" style="display:none;"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"></path></svg>
+        </button>
+        <button id="refresh-btn" class="icon-btn" aria-label="Refresh variables">
+          <span class="tooltip">Refresh variables</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M222,48V96a6,6,0,0,1-6,6H168a6,6,0,0,1,0-12h33.52L183.47,72a81.51,81.51,0,0,0-57.53-24h-.46A81.5,81.5,0,0,0,68.19,71.28a6,6,0,1,1-8.38-8.58,93.38,93.38,0,0,1,65.67-26.76H126a93.45,93.45,0,0,1,66,27.53l18,18V48a6,6,0,0,1,12,0ZM187.81,184.72a81.5,81.5,0,0,1-57.29,23.34h-.46a81.51,81.51,0,0,1-57.53-24L54.48,166H88a6,6,0,0,0,0-12H40a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V174.48l18,18.05a93.45,93.45,0,0,0,66,27.53h.52a93.38,93.38,0,0,0,65.67-26.76,6,6,0,1,0-8.38-8.58Z"></path></svg>
+        </button>
+        <button id="reset-size-btn" class="icon-btn" aria-label="Reset window size">
+          <span class="tooltip">Reset window size</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M146,104V64a6,6,0,0,1,12,0V89.51l45.76-45.75a6,6,0,0,1,8.48,8.48L166.48,98H192a6,6,0,0,1,0,12H152A6,6,0,0,1,146,104Zm-42,42H64a6,6,0,0,0,0,12H89.52L43.76,203.76a6,6,0,1,0,8.48,8.48L98,166.48V192a6,6,0,0,0,12,0V152A6,6,0,0,0,104,146Zm62.48,12H192a6,6,0,0,0,0-12H152a6,6,0,0,0-6,6v40a6,6,0,0,0,12,0V166.48l45.76,45.76a6,6,0,0,0,8.48-8.48ZM104,58a6,6,0,0,0-6,6V89.51L52.24,43.76a6,6,0,0,0-8.48,8.48L89.52,98H64a6,6,0,0,0,0,12h40a6,6,0,0,0,6-6V64A6,6,0,0,0,104,58Z"></path></svg>
+        </button>
+        <button id="btn-help" class="icon-btn" aria-label="Help">
+          <span class="tooltip">Help</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M140,180a12,12,0,1,1-12-12A12,12,0,0,1,140,180Zm-12-108c-24.26,0-44,17.94-44,40v4a8,8,0,0,0,16,0v-4c0-13.23,12.56-24,28-24s28,10.77,28,24-12.56,24-28,24a8,8,0,0,0-8,8v8a8,8,0,0,0,16,0v-.72C158.18,148.8,176,134.44,176,112,176,89.94,156.26,72,128,72Zm104,56A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+        </button>
+        <button id="btn-about" class="icon-btn" aria-label="About">
+          <span class="tooltip">About</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M128,26A102,102,0,1,0,230,128,102.12,102.12,0,0,0,128,26Zm0,192a90,90,0,1,1,90-90A90.1,90.1,0,0,1,128,218Zm-8-74V112a8,8,0,0,1,16,0v32a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180ZM116,80a12,12,0,1,1,12,12A12,12,0,0,1,116,80Z"></path></svg>
+        </button>
+        <span class="footer-stats" id="footer-stats">0 selected</span>
+      </div>
+      <div class="footer-right">
+        <button id="apply-btn" class="primary-button btn btn-primary">Apply Changes</button>
       </div>
     </div>
   </div>
@@ -611,8 +853,58 @@
       <h3>Overwrite Existing Descriptions?</h3>
       <p>Some selected variables already have descriptions. Do you want to overwrite them?</p>
       <div class="dialog-actions">
-        <button id="dialog-cancel" class="secondary-button">Cancel</button>
-        <button id="dialog-proceed" class="primary-button">Proceed</button>
+        <button id="dialog-cancel" class="secondary-button btn btn-secondary">Cancel</button>
+        <button id="dialog-proceed" class="primary-button btn btn-primary">Proceed</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="info-backdrop" class="help-backdrop hidden">
+    <div class="help-modal" id="info-modal" role="dialog" aria-modal="true" aria-labelledby="info-title" tabindex="-1">
+      <div class="help-modal-header">
+        <span class="help-modal-title" id="info-title">Help</span>
+        <button id="btn-info-close" class="dialog-close-btn" aria-label="Close dialog">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
+        </button>
+      </div>
+      <div id="help-modal-body" class="help-modal-body">
+        <section class="help-section">
+          <div class="help-section-title">What this plugin does</div>
+          <p class="help-para">Batch view, set, or clear descriptions on Figma variables across one or more collections — far faster than editing each variable individually in the Figma Variables panel.</p>
+        </section>
+        <section class="help-section">
+          <div class="help-section-title">Before you start</div>
+          <p class="help-para">The plugin loads all variable collections in the current file. Use the filter checkbox to narrow the list to variables that already have descriptions, which is useful when you want to audit or clear existing copy.</p>
+        </section>
+        <section class="help-section">
+          <div class="help-section-title">How to use it</div>
+          <p class="help-para">1. Optionally tick "Show only variables with descriptions" to filter the list.</p>
+          <p class="help-para">2. Select variables using the collection-level checkbox (selects all in that collection) or individual row checkboxes. Use Select All at the top to select everything visible.</p>
+          <p class="help-para">3. In the Action section, choose either "Clear all descriptions" or "Set description to:" and type your new description text in the field below.</p>
+          <p class="help-para">4. Click Apply Changes. If any selected variables already have descriptions and you chose Set, a confirmation dialog asks whether to overwrite them — click Proceed to continue or Cancel to go back.</p>
+        </section>
+        <section class="help-section">
+          <div class="help-section-title">Understanding the output</div>
+          <p class="help-para">A success or error banner appears briefly after the operation. The variable list refreshes automatically. Descriptions are written directly to the Figma file — there is no staging or preview step for description edits.</p>
+        </section>
+      </div>
+      <div id="about-modal-body" class="help-modal-body hidden">
+        <section class="help-section">
+          <div class="help-section-title">About</div>
+          <p class="help-para">Variable Descriptions Manager — batch-edit variable descriptions across all collections in the current Figma file.</p>
+        </section>
+        <section class="help-section">
+          <div class="help-section-title">Version</div>
+          <p class="help-para">1.0.0</p>
+        </section>
+        <section class="help-section">
+          <div class="help-section-title">Scope</div>
+          <p class="help-para">Batch description editing for variables in the current Figma file. Supports clearing descriptions or setting a shared description across any selection of variables.</p>
+        </section>
+        <section class="help-section">
+          <div class="help-section-title">Network</div>
+          <p class="help-para">No external network access is requested by the plugin manifest.</p>
+        </section>
       </div>
     </div>
   </div>
@@ -625,7 +917,7 @@
     height="16"
     fill="currentColor"
     viewBox="0 0 256 256"
-    style="position: absolute; right: 4px; bottom: 4px; cursor: nwse-resize; z-index: 10000; opacity: 0.4;">
+    style="position: absolute; right: 4px; bottom: 4px; cursor: nwse-resize; touch-action: none; user-select: none; z-index: 10000; opacity: 0.4;">
     <path d="M213.66,133.66l-80,80a8,8,0,0,1-11.32-11.32l80-80a8,8,0,0,1,11.32,11.32Zm-16-99.32a8,8,0,0,0-11.32,0l-152,152a8,8,0,0,0,11.32,11.32l152-152A8,8,0,0,0,197.66,34.34Z"></path>
   </svg>
   
@@ -651,8 +943,20 @@
     const dialogCancel = document.getElementById('dialog-cancel');
     const dialogProceed = document.getElementById('dialog-proceed');
     const themeToggle = document.getElementById('theme-toggle');
+    const refreshBtn = document.getElementById('refresh-btn');
+    const resetSizeBtn = document.getElementById('reset-size-btn');
+    const helpBtn = document.getElementById('btn-help');
+    const aboutBtn = document.getElementById('btn-about');
+    const infoBackdrop = document.getElementById('info-backdrop');
+    const infoModal = document.getElementById('info-modal');
+    const infoTitle = document.getElementById('info-title');
+    const infoCloseBtn = document.getElementById('btn-info-close');
+    const helpModalBody = document.getElementById('help-modal-body');
+    const aboutModalBody = document.getElementById('about-modal-body');
+    const footerStats = document.getElementById('footer-stats');
     const sunIcon = document.getElementById('sun-icon');
     const moonIcon = document.getElementById('moon-icon');
+    let lastInfoTrigger = null;
 
     // Action radio buttons
     const actionRadios = document.querySelectorAll('input[name="action"]');
@@ -683,36 +987,172 @@
       setTheme(currentTheme === 'light' ? 'dark' : 'light');
     }
 
+    function resetWindowSize() {
+      parent.postMessage({
+        pluginMessage: {
+          type: 'resize',
+          size: { w: 1280, h: 720 }
+        }
+      }, '*');
+      parent.postMessage({ pluginMessage: { type: 'persist-size' } }, '*');
+    }
+
+    function refreshVariables() {
+      selectedVariableIds.clear();
+      statusMessage.classList.add('hidden');
+      collectionsContainer.innerHTML = '<div class="empty-state">Loading variables...</div>';
+      parent.postMessage({ pluginMessage: { type: 'load-variables' } }, '*');
+    }
+
+    function openInfoDialog(kind, trigger) {
+      const isAbout = kind === 'about';
+      infoTitle.textContent = isAbout ? 'About' : 'Help';
+      helpModalBody.classList.toggle('hidden', isAbout);
+      aboutModalBody.classList.toggle('hidden', !isAbout);
+      lastInfoTrigger = trigger || document.activeElement;
+      infoBackdrop.classList.remove('hidden');
+      infoModal.focus();
+    }
+
+    function closeInfoDialog() {
+      infoBackdrop.classList.add('hidden');
+      if (lastInfoTrigger && typeof lastInfoTrigger.focus === 'function') {
+        lastInfoTrigger.focus();
+      }
+    }
+
     // Add resize functionality
     function setupResizeHandle() {
       const corner = document.getElementById('resize-corner');
       if (!corner) return;
-      
-      const resizeWindow = (e) => {
-        const size = {
-          w: Math.max(400, Math.floor(e.clientX + 5)),
-          h: Math.max(400, Math.floor(e.clientY + 5))
+
+      const MIN_RESIZE_WIDTH = 900;
+      const MIN_RESIZE_HEIGHT = 600;
+      const RESIZE_DRAG_THRESHOLD = 2;
+      let isResizing = false;
+      let activeResizePointerId = null;
+      let startX = 0;
+      let startY = 0;
+      let startW = 0;
+      let startH = 0;
+      let hasResizeDrag = false;
+      let queuedResizeFrame = null;
+      let queuedResizeSize = null;
+      let lastResizeSize = null;
+
+      function clampResizeSize(w, h) {
+        return {
+          w: Math.round(Math.max(MIN_RESIZE_WIDTH, w)),
+          h: Math.round(Math.max(MIN_RESIZE_HEIGHT, h)),
         };
-        parent.postMessage({ 
-          pluginMessage: { 
-            type: 'resize', 
-            size: size 
+      }
+
+      function postResizeSize(size) {
+        parent.postMessage({
+          pluginMessage: {
+            type: 'resize',
+            size
           }
         }, '*');
-      };
-      
-      const handlePointerDown = (e) => {
-        corner.onpointermove = resizeWindow;
-        corner.setPointerCapture(e.pointerId);
-      };
-      
-      const handlePointerUp = (e) => {
-        corner.onpointermove = null;
-        corner.releasePointerCapture(e.pointerId);
-      };
-      
-      corner.addEventListener('pointerdown', handlePointerDown);
-      corner.addEventListener('pointerup', handlePointerUp);
+      }
+
+      function queueResize(size) {
+        lastResizeSize = size;
+        queuedResizeSize = size;
+        if (queuedResizeFrame !== null) return;
+
+        queuedResizeFrame = requestAnimationFrame(() => {
+          queuedResizeFrame = null;
+          if (!queuedResizeSize) return;
+          const nextSize = queuedResizeSize;
+          queuedResizeSize = null;
+          postResizeSize(nextSize);
+        });
+      }
+
+      function endResize(shouldPersist = true) {
+        if (!isResizing) return;
+
+        if (queuedResizeFrame !== null) {
+          cancelAnimationFrame(queuedResizeFrame);
+          queuedResizeFrame = null;
+          queuedResizeSize = null;
+        }
+
+        if (hasResizeDrag && lastResizeSize) {
+          postResizeSize(lastResizeSize);
+          if (shouldPersist) {
+            parent.postMessage({ pluginMessage: { type: 'persist-size' } }, '*');
+          }
+        }
+
+        const pointerIdToRelease = activeResizePointerId;
+        isResizing = false;
+        activeResizePointerId = null;
+        hasResizeDrag = false;
+        lastResizeSize = null;
+
+        if (
+          pointerIdToRelease !== null &&
+          corner.hasPointerCapture &&
+          corner.hasPointerCapture(pointerIdToRelease)
+        ) {
+          try {
+            corner.releasePointerCapture(pointerIdToRelease);
+          } catch (_) {}
+        }
+      }
+
+      corner.addEventListener('pointerdown', (e) => {
+        if (e.button !== 0) return;
+        isResizing = true;
+        activeResizePointerId = e.pointerId;
+        hasResizeDrag = false;
+        lastResizeSize = null;
+        startX = e.screenX; startY = e.screenY;
+        startW = window.innerWidth; startH = window.innerHeight;
+        try {
+          corner.setPointerCapture(e.pointerId);
+        } catch (_) {}
+        e.preventDefault();
+        e.stopPropagation();
+      });
+
+      function handleResizeMove(e) {
+        if (!isResizing || e.pointerId !== activeResizePointerId) return;
+        if ((e.buttons & 1) !== 1) {
+          endResize(true);
+          return;
+        }
+
+        const dx = e.screenX - startX;
+        const dy = e.screenY - startY;
+        if (!hasResizeDrag && Math.abs(dx) < RESIZE_DRAG_THRESHOLD && Math.abs(dy) < RESIZE_DRAG_THRESHOLD) {
+          return;
+        }
+
+        hasResizeDrag = true;
+        queueResize(clampResizeSize(startW + dx, startH + dy));
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      function handleResizeEnd(e) {
+        if (e.pointerId !== activeResizePointerId) return;
+        endResize(true);
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      corner.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+      document.addEventListener('pointermove', handleResizeMove, true);
+      document.addEventListener('pointerup', handleResizeEnd, true);
+      window.addEventListener('pointerup', handleResizeEnd, true);
+      document.addEventListener('mouseup', () => endResize(true), true);
+      window.addEventListener('blur', () => endResize(true));
     }
 
     // Initialize
@@ -728,6 +1168,36 @@
     function setupEventListeners() {
       // Theme toggle
       themeToggle.addEventListener('click', toggleTheme);
+      refreshBtn.addEventListener('click', refreshVariables);
+      resetSizeBtn.addEventListener('click', resetWindowSize);
+      helpBtn.addEventListener('click', (event) => openInfoDialog('help', event.currentTarget));
+      aboutBtn.addEventListener('click', (event) => openInfoDialog('about', event.currentTarget));
+      infoCloseBtn.addEventListener('click', closeInfoDialog);
+      infoBackdrop.addEventListener('click', (event) => {
+        if (!infoModal.contains(event.target)) closeInfoDialog();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (infoBackdrop.classList.contains('hidden')) return;
+        if (event.key === 'Escape') {
+          closeInfoDialog();
+          return;
+        }
+        if (event.key !== 'Tab') return;
+
+        const focusable = Array.from(infoModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+          .filter(el => !el.disabled && el.offsetParent !== null);
+        if (focusable.length === 0) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
       
       // Action radio change
       actionRadios.forEach(radio => {
@@ -821,19 +1291,22 @@
         }
         
         const collectionDiv = document.createElement('div');
-        collectionDiv.className = 'collection';
+        collectionDiv.className = 'collection accordion collapsed';
         
         // Collection header
         const header = document.createElement('div');
-        header.className = 'collection-header';
+        header.className = 'collection-header accordion-header';
+        header.setAttribute('role', 'button');
+        header.setAttribute('tabindex', '0');
+        header.setAttribute('aria-expanded', 'false');
         
         const toggle = document.createElement('span');
-        toggle.className = 'toggle';
-        toggle.textContent = '▼';
+        toggle.className = 'toggle accordion-chevron';
+        toggle.textContent = '▶';
         
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.className = 'collection-checkbox';
+        checkbox.className = 'checkbox collection-checkbox';
         checkbox.checked = areAllVariablesSelected(filteredVariables);
         checkbox.addEventListener('change', (e) => {
           e.stopPropagation();
@@ -851,7 +1324,10 @@
         
         // Variables list
         const variablesList = document.createElement('div');
-        variablesList.className = 'variables-list';
+        const variablesListId = `variables-${collection.collectionId}`;
+        variablesList.className = 'variables-list accordion-body collapsed';
+        variablesList.id = variablesListId;
+        header.setAttribute('aria-controls', variablesListId);
         
         filteredVariables.forEach(variable => {
           const varDiv = document.createElement('div');
@@ -859,7 +1335,7 @@
           
           const varCheckbox = document.createElement('input');
           varCheckbox.type = 'checkbox';
-          varCheckbox.className = 'variable-checkbox';
+          varCheckbox.className = 'checkbox variable-checkbox';
           varCheckbox.checked = selectedVariableIds.has(variable.id);
           varCheckbox.dataset.variableId = variable.id;
           varCheckbox.addEventListener('change', (e) => {
@@ -886,7 +1362,18 @@
         header.addEventListener('click', (e) => {
           if (e.target.type === 'checkbox') return; // Don't toggle if clicking checkbox
           variablesList.classList.toggle('collapsed');
+          collectionDiv.classList.toggle('collapsed', variablesList.classList.contains('collapsed'));
           toggle.textContent = variablesList.classList.contains('collapsed') ? '▶' : '▼';
+          header.setAttribute('aria-expanded', variablesList.classList.contains('collapsed') ? 'false' : 'true');
+        });
+
+        header.addEventListener('keydown', (e) => {
+          if (e.key !== 'Enter' && e.key !== ' ') return;
+          e.preventDefault();
+          variablesList.classList.toggle('collapsed');
+          collectionDiv.classList.toggle('collapsed', variablesList.classList.contains('collapsed'));
+          toggle.textContent = variablesList.classList.contains('collapsed') ? '▶' : '▼';
+          header.setAttribute('aria-expanded', variablesList.classList.contains('collapsed') ? 'false' : 'true');
         });
         
         collectionDiv.appendChild(header);
@@ -947,6 +1434,7 @@
       
       selectAllLabel.textContent = `Select All (${totalCount} variable${totalCount !== 1 ? 's' : ''})`;
       selectionCount.textContent = `${selectedCount} selected`;
+      footerStats.textContent = `${selectedCount} selected`;
       
       selectAllCheckbox.checked = selectedCount > 0 && selectedCount === totalCount;
       selectAllCheckbox.indeterminate = selectedCount > 0 && selectedCount < totalCount;
@@ -978,6 +1466,11 @@
       
       // Check if we're setting a description and if any selected variables already have descriptions
       if (action === 'set') {
+        if (newDescription.length === 0) {
+          showStatus('Enter a description, or choose clear all descriptions.', true);
+          return;
+        }
+
         const hasExistingDescriptions = Array.from(selectedVariableIds).some(varId => {
           for (const collection of collectionsData) {
             const variable = collection.variables.find(v => v.id === varId);
